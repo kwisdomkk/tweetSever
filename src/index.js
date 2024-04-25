@@ -40,7 +40,10 @@ app.use(
   })
 );
 
+app.use(express.static("build"));
+
 // 라우터
+app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 app.use("/users", userRouter);
 app.use("/tweets", upload.single("file"), tweetRouter);
 

@@ -101,3 +101,17 @@ export const createComment = async (req, res) => {
     console.log(error);
   }
 };
+
+//프로필에서 트윗 불러오기
+export const getProfileTweets = async (req, res) => {
+  try {
+    const {
+      params: { userId },
+    } = req;
+
+    const data = await Tweet.find({ writer: userId }).sort({ createdAt: -1 });
+    res.send({ result: true, data });
+  } catch (e) {
+    console.log(e);
+  }
+};

@@ -1,5 +1,5 @@
 import User from "../models/user";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 // 회원가입
 export const memberRegister = async (req, res) => {
@@ -62,6 +62,7 @@ export const memberLogin = async (req, res) => {
         username: user.username,
         email: user.email,
         id: user._id,
+        avatar: user.profileImage,
       };
       const data = req.session;
       console.log(data);
